@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    style="@style/listitemstyle">
+    <TextView
+        android:id="@+id/article_title"
+        style="@style/titlestyle"
+        app:layout_constraintBottom_toTopOf="@+id/article_section"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="@string/article_title" />
+
+    <TextView
+        android:id="@+id/article_section"
+        style="@style/articlesectionstyle"
+        app:layout_constraintBottom_toTopOf="@+id/article_time"
+        app:layout_constraintStart_toStartOf="@+id/article_title"
+        app:layout_constraintTop_toBottomOf="@+id/article_title"
+        tools:text="@string/article_section" />
+
+    <TextView
+        android:id="@+id/article_date"
+        style="@style/timeanddatestyle"
+        android:paddingStart="20dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/article_time"
+        app:layout_constraintEnd_toStartOf="@+id/article_time"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="@string/article_date" />
+
+    <TextView
+        android:id="@+id/article_time"
+        style="@style/timeanddatestyle"
+        android:layout_marginEnd="26dp"
+        android:layout_marginRight="26dp"
+        android:paddingStart="200dp"
+        app:layout_constraintBottom_toTopOf="@+id/author"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/article_date"
+        app:layout_constraintTop_toBottomOf="@+id/article_section"
+        tools:text="@string/article_time" />
+
+    <TextView
+        android:id="@+id/author"
+        style="@style/authorstyle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/article_date"
+        app:layout_constraintTop_toBottomOf="@+id/article_time"
+        tools:text="@string/author" />
+</android.support.constraint.ConstraintLayout>
