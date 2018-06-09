@@ -9,8 +9,6 @@
             android:selectAllOnFocus="true"
             android:title="@string/settings_item_per_page_label"
 
-
-
             />
 
         <EditTextPreference
@@ -18,7 +16,7 @@
             android:defaultValue="@string/settings_topic_category_by_default"
             android:entries="@array/settings_order_by_labels"
             android:entryValues="@array/settings_order_by_values"
-            android:key="@string/settings_topic_category"
+            android:key="@string/settings_topic_category_label"
             android:title="@string/settings_topic_category_label" />
             />
 

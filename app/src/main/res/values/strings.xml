@@ -28,7 +28,7 @@
     <string name="settings_title">Articles Settings</string>
 
     <!--String for the Preference Labels-->
-    <string name="settings_item_per_page_label">Item Per Page (1 – 50)</string>
+    <string name="settings_item_per_page_label">Number of items</string>
     <string name="settings_item_per_page">page_size</string>
     <string name="settings_item_per_page_default">50</string>
     <!-- Strings For Topic Category Preference [CHAR LIMIT=30] -->
