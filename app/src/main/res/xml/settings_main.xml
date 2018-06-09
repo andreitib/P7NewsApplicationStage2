@@ -5,7 +5,7 @@
         <ListPreference
             android:defaultValue="@string/settings_item_per_page_default"
             android:inputType="numberDecimal"
-            android:key="@string/settings_item_per_page_key"
+            android:key="@string/settings_item_per_page"
             android:selectAllOnFocus="true"
             android:title="@string/settings_item_per_page_label"
 
@@ -18,7 +18,7 @@
             android:defaultValue="@string/settings_topic_category_by_default"
             android:entries="@array/settings_order_by_labels"
             android:entryValues="@array/settings_order_by_values"
-            android:key="@string/settings_topic_category_key"
+            android:key="@string/settings_topic_category"
             android:title="@string/settings_topic_category_label" />
             />
 

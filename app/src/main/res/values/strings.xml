@@ -29,13 +29,14 @@
 
     <!--String for the Preference Labels-->
     <string name="settings_item_per_page_label">Item Per Page (1 – 50)</string>
-    <string name="settings_item_per_page_key">page_size</string>
+    <string name="settings_item_per_page">page_size</string>
     <string name="settings_item_per_page_default">50</string>
     <!-- Strings For Topic Category Preference [CHAR LIMIT=30] -->
     <string name="settings_topic_category_label">Topic</string>
-    <string name="settings_topic_category_key">topic_category</string>
+    <string name="settings_topic_category">topic_category</string>
     <string name="settings_topic_category_by_default">@string/settings_all_topic_category_value</string>
-
+    settings_menu_item
+    <string name="settings_menu_item">Settings</string>
 
     <!-- Label for All topic category  option [CHAR LIMIT=20] -->
     <string name="settings_all_topic_category_label">All</string>

@@ -36,8 +36,6 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
      */
     private static final int JSON_ARTICLE_FEED_LOADER_ID = 1;
 
-
-
     /** Adapter for the list of news */
     private ArticleAdapter JSONnewsAdapter;
 
@@ -110,17 +108,36 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
             mEmptyStateTextView.setText(R.string.no_internet_connection);
         }
     }
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if (key.equals(getString(R.string.settings_item_per_page)) ||
+                key.equals(getString(R.string.settings_topic_category))){
+            // Clear the ListView as a new query will be kicked off
+            JSONnewsAdapter.clear();
+
+            // Hide the empty state text view as the loading indicator will be displayed
+            mEmptyStateTextView.setVisibility(View.GONE);
+
+            // Show the loading indicator while new data is being fetched
+            View loadingIndicator = findViewById(R.id.loading_indicator);
+            loadingIndicator.setVisibility(View.VISIBLE);
+
+            // Restart the loader to requery the USGS as the query settings have been updated
+            getLoaderManager().restartLoader(JSON_ARTICLE_FEED_LOADER_ID, null, this);
+        }
+
+    }
 
     @Override
     public Loader<List<Article>> onCreateLoader(int i, Bundle bundle) {
         // Create a new loader for the given URL
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
         String itemPerPage = sharedPrefs.getString(
-                getString(R.string.settings_item_per_page_key),
+                getString(R.string.settings_item_per_page),
                 getString(R.string.settings_item_per_page_default));
 
         String topicCategory = sharedPrefs.getString(
-                getString(R.string.settings_topic_category_key),
+                getString(R.string.settings_topic_category),
                 getString(R.string.settings_topic_category_by_default));
 
         Uri baseUri = Uri.parse(GUARDIAN_REQUEST_URL);
@@ -131,11 +148,6 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
         uriBuilder.appendQueryParameter("show-reference", "author");
         uriBuilder.appendQueryParameter("show-tags", "contributor");
         uriBuilder.appendQueryParameter("page-size", itemPerPage);
-        if (!topicCategory.equals(getString(R.string.settings_topic_category_by_default))) {
-            uriBuilder.appendQueryParameter("section", topicCategory);
-        }  //q parameter can be something like education,debate,economy,immigration,...
-        //can combine debate AND economy as well(can use these operators :AND,OR,NOT)
-      //  uriBuilder.appendQueryParameter("q", "");
 
         return new ArticleLoader(this, GUARDIAN_REQUEST_URL);
     }
@@ -166,7 +178,7 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
+        getMenuInflater().inflate(R.menu.menu_settings, menu);
         return true;
     }
 

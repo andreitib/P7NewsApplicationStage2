@@ -25,10 +25,10 @@ public class SettingsActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.settings_main);
 
-            Preference itemperPage = findPreference(getString(R.string.settings_item_per_page_key));
+            Preference itemperPage = findPreference(getString(R.string.settings_item_per_page));
             bindPreferenceSummaryToValue(itemperPage);
 
-            Preference orderbyTopic = findPreference(getString(R.string.settings_topic_category_key));
+            Preference orderbyTopic = findPreference(getString(R.string.settings_topic_category));
             bindPreferenceSummaryToValue(orderbyTopic);
         }
 
