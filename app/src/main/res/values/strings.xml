@@ -35,7 +35,6 @@
     <string name="settings_topic_category_label">Topic</string>
     <string name="settings_topic_category">topic_category</string>
     <string name="settings_topic_category_by_default">@string/settings_all_topic_category_value</string>
-    settings_menu_item
     <string name="settings_menu_item">Settings</string>
 
     <!-- Label for All topic category  option [CHAR LIMIT=20] -->

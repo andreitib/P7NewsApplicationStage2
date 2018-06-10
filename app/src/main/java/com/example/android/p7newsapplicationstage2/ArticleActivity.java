@@ -108,25 +108,7 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
             mEmptyStateTextView.setText(R.string.no_internet_connection);
         }
     }
-    @Override
-    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        if (key.equals(getString(R.string.settings_item_per_page)) ||
-                key.equals(getString(R.string.settings_topic_category))){
-            // Clear the ListView as a new query will be kicked off
-            JSONnewsAdapter.clear();
 
-            // Hide the empty state text view as the loading indicator will be displayed
-            mEmptyStateTextView.setVisibility(View.GONE);
-
-            // Show the loading indicator while new data is being fetched
-            View loadingIndicator = findViewById(R.id.loading_indicator);
-            loadingIndicator.setVisibility(View.VISIBLE);
-
-            // Restart the loader to requery the USGS as the query settings have been updated
-            getLoaderManager().restartLoader(JSON_ARTICLE_FEED_LOADER_ID, null, this);
-        }
-
-    }
 
     @Override
     public Loader<List<Article>> onCreateLoader(int i, Bundle bundle) {
@@ -142,14 +124,25 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
 
         Uri baseUri = Uri.parse(GUARDIAN_REQUEST_URL);
         Uri.Builder uriBuilder = baseUri.buildUpon();
-
-        uriBuilder.appendQueryParameter("format", "geojson");
+        uriBuilder.appendQueryParameter("format", "json");
+        //can be oldest,newest or relevance(default where q params is specified)
         uriBuilder.appendQueryParameter("order-by", "newest");
+        /*can be author,isbn,basic-prefix,...*/
         uriBuilder.appendQueryParameter("show-reference", "author");
+        /*can be all,contributor,keyword,newspaper-book,publication,series,tone,type,...*/
         uriBuilder.appendQueryParameter("show-tags", "contributor");
+        /*language parameter(ISO language code:fr,en)*/
+        uriBuilder.appendQueryParameter("lang", "en");
+        //default items per page is 10 but can get more(1-50)!!
         uriBuilder.appendQueryParameter("page-size", itemPerPage);
+        if (!topicCategory.equals(getString(R.string.settings_topic_category_by_default))) {
+            uriBuilder.appendQueryParameter("section", topicCategory);
+        }
+        //q parameter can be something like education,debate,economy,immigration,...
+        //can combine debate AND economy as well(can use these operators :AND,OR,NOT)
+        uriBuilder.appendQueryParameter("q", "");
 
-        return new ArticleLoader(this, GUARDIAN_REQUEST_URL);
+        return new ArticleLoader(this, uriBuilder.toString());
     }
 
     @Override
@@ -192,4 +185,25 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
         }
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if (key.equals(getString(R.string.settings_item_per_page)) ||
+                key.equals(getString(R.string.settings_topic_category))){
+            // Clear the ListView as a new query will be kicked off
+            JSONnewsAdapter.clear();
+
+            // Hide the empty state text view as the loading indicator will be displayed
+            mEmptyStateTextView.setVisibility(View.GONE);
+
+            // Show the loading indicator while new data is being fetched
+            View loadingIndicator = findViewById(R.id.loading_indicator);
+            loadingIndicator.setVisibility(View.VISIBLE);
+
+            // Restart the loader to requery the USGS as the query settings have been updated
+            getLoaderManager().restartLoader(JSON_ARTICLE_FEED_LOADER_ID, null, this);
+        }
+
+    }
+
 }
