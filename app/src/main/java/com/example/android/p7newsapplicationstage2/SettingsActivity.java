@@ -28,8 +28,8 @@ public class SettingsActivity extends AppCompatActivity {
             Preference itemperPage = findPreference(getString(R.string.settings_item_per_page));
             bindPreferenceSummaryToValue(itemperPage);
 
-            Preference topicCategory = findPreference(getString(R.string.settings_topic_category));
-            bindPreferenceSummaryToValue(topicCategory);
+            Preference orderbyTopic = findPreference(getString(R.string.settings_topic_category));
+            bindPreferenceSummaryToValue(orderbyTopic);
         }
 
         @Override
