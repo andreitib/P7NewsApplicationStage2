@@ -146,11 +146,11 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
         uriBuilder.appendQueryParameter("order-by", "newest");
         uriBuilder.appendQueryParameter("show-reference", "author");
         uriBuilder.appendQueryParameter("show-tags", "contributor");
-        uriBuilder.appendQueryParameter("lang", "en");
-        uriBuilder.appendQueryParameter("page-size", itemPerPage);
-        //if(!orderbyTopic.equals(getString(R.string.settings_topic_category_by_default))) {
-            uriBuilder.appendQueryParameter("section", orderbyTopic);
 
+        uriBuilder.appendQueryParameter("page-size", itemPerPage);
+        if(!orderbyTopic.equals(getString(R.string.settings_topic_category_by_default))) {
+            uriBuilder.appendQueryParameter("section", orderbyTopic);
+        }
         return new ArticleLoader(this, uriBuilder.toString());
     }
 

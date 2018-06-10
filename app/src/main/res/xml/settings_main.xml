@@ -3,6 +3,7 @@
         android:title="@string/settings_title">
     <ListPreference
         android:defaultValue="@string/settings_item_per_page_default"
+        android:entries="@array/settings_order_by_labels"
         android:entryValues="@array/settings_order_by_values"
         android:key="@string/settings_item_per_page"
         android:title="@string/settings_item_per_page_label" />
