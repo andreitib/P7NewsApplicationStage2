@@ -113,12 +113,12 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
     @Override
     public Loader<List<Article>> onCreateLoader(int i, Bundle bundle) {
         // Create a new loader for the given URL
-        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
-        String itemPerPage = sharedPrefs.getString(
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String itemPerPage = sharedPreferences.getString(
                 getString(R.string.settings_item_per_page),
                 getString(R.string.settings_item_per_page_default));
 
-        String topicCategory = sharedPrefs.getString(
+        String topicCategory = sharedPreferences.getString(
                 getString(R.string.settings_topic_category),
                 getString(R.string.settings_topic_category_by_default));
 
