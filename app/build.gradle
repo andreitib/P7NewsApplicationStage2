@@ -28,5 +28,4 @@ dependencies {
     implementation group: 'commons-io', name: 'commons-io', version: '2.4'
     implementation 'org.apache.commons:commons-lang3:3.4'
     implementation 'org.jsoup:jsoup:1.10.3'
-    compile 'com.jakewharton:butterknife:6.1.0'
 }
