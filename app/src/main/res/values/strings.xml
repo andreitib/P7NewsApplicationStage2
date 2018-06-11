@@ -2,7 +2,7 @@
 
 <resources>
     <!-- Title for the application. [CHAR LIMIT=12] -->
-    <string name="app_name"> Android Articles App Stage 2</string>
+    <string name="app_name">Articles App Stage 2</string>
 
     <!-- Default text to show with the newsFeed location -->
     <string name="near_the">Near the</string>
@@ -32,7 +32,7 @@
     <string name="settings_item_per_page">page_size</string>
     <string name="settings_item_per_page_default">50</string>
     <!-- Strings For Topic Category Preference [CHAR LIMIT=30] -->
-    <string name="settings_topic_category_label">Topic</string>
+    <string name="settings_topic_category_label">Topic Category</string>
     <string name="settings_topic_category">topic_category</string>
     <string name="settings_topic_category_by_default">@string/settings_all_topic_category_value</string>
     <string name="settings_menu_item">Menu Settings</string>
@@ -43,11 +43,24 @@
 
 
 
-    <!-- Label for topic category politic option [CHAR LIMIT=20] -->
+    <!-- Label for topic category politic options  -->
     <string name="settings_topic_category_politic_label">Politic</string>
     <string name="settings_topic_category_politic_value">politics</string>
 
+    <!-- Label for topic category media options  -->
+    <string name="settings_topic_category_media_label">Media</string>
+    <string name="settings_topic_category_media_value">media</string>
 
-    <string name="settings_topic_category_business_label">Business</string>
-    <string name="settings_topic_category_business_value">business</string>
+    <!-- Label for topic category stage options  -->
+    <string name="settings_topic_category_stage_label">Stage</string>
+    <string name="settings_topic_category_stage_value">stage</string>
+
+    <!-- Label for topic category sport options  -->
+    <string name="settings_topic_category_sport_label">Sport</string>
+    <string name="settings_topic_category_sport_value">sport</string>
+
+    <!-- Label for topic category film options  -->
+    <string name="settings_topic_category_film_label">Film</string>
+    <string name="settings_topic_category_film_value">film</string>
+
 </resources>

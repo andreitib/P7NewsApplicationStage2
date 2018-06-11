@@ -24,7 +24,7 @@
     <TextView
         android:id="@+id/article_date"
         style="@style/timeanddatestyle"
-        android:paddingStart="20dp"
+        android:paddingStart="@dimen/padstart"
         app:layout_constraintBaseline_toBaselineOf="@+id/article_time"
         app:layout_constraintEnd_toStartOf="@+id/article_time"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -34,8 +34,8 @@
     <TextView
         android:id="@+id/article_time"
         style="@style/timeanddatestyle"
-        android:layout_marginEnd="26dp"
-        android:layout_marginRight="26dp"
+        android:layout_marginEnd="@dimen/layoutmargindim"
+        android:layout_marginRight="@dimen/layoutmargindim"
         android:paddingStart="200dp"
         app:layout_constraintBottom_toTopOf="@+id/author"
         app:layout_constraintEnd_toEndOf="parent"

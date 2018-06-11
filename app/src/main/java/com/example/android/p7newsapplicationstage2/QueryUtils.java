@@ -41,7 +41,11 @@ public final class QueryUtils {
     private static final String json_response = "response";
     private static final String json_results = "results";
     private static final String json_url = "webUrl";
+    private static final String json_requestmethod = "GET";
     private static final int the_index = 0;
+    private static final int jsnon_readtimeout=10000;
+    private static final int json_connectiontimeout=15000;
+
     /**
      * building and manipulating my uri url requests
      */
@@ -103,9 +107,9 @@ public final class QueryUtils {
         InputStream inputStream = null;
         try {
             urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setReadTimeout(10000);
-            urlConnection.setConnectTimeout(15000);
-            urlConnection.setRequestMethod("GET");
+            urlConnection.setReadTimeout(jsnon_readtimeout);
+            urlConnection.setConnectTimeout(json_connectiontimeout);
+            urlConnection.setRequestMethod(json_requestmethod);
             urlConnection.connect();
             // If the request was successful (response code 200),
             // then read the input stream and parse the response.
