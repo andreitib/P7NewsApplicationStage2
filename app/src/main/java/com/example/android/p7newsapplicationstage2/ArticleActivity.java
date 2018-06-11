@@ -118,6 +118,7 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
             // Hide the empty state text view as the loading indicator will be displayed
             mEmptyStateTextView.setVisibility(View.GONE);
 
+
             // Show the loading indicator while new data is being fetched
             View loadingIndicator = findViewById(R.id.loading_indicator);
             loadingIndicator.setVisibility(View.VISIBLE);
