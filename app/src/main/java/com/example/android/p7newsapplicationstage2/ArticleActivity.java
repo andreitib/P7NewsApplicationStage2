@@ -144,9 +144,23 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
         Uri baseUri = Uri.parse(GUARDIAN_REQUEST_URL);
         Uri.Builder uriBuilder = baseUri.buildUpon();
         uriBuilder.appendQueryParameter("format", "json");
+        //can be oldest,newest or relevance(default where q params is specified)
         uriBuilder.appendQueryParameter("order-by", "newest");
+        /*can be author,isbn,basic-prefix,...*/
+        uriBuilder.appendQueryParameter("show-reference", "author");
+        /*can be all,contributor,keyword,newspaper-book,publication,series,tone,type,...*/
+        uriBuilder.appendQueryParameter("show-tags", "contributor");
+        /*language parameter(ISO language code:fr,en)*/
+        uriBuilder.appendQueryParameter("lang", "en");
+        //default items per page is 10 but can get more(1-50)!!
         uriBuilder.appendQueryParameter("page-size", itemPerPage);
-        uriBuilder.appendQueryParameter("section", orderbyTopic);
+        if (!orderbyTopic.equals(getString(R.string.settings_topic_category_by_default))) {
+            uriBuilder.appendQueryParameter("section", orderbyTopic);
+        }
+        //q parameter can be something like education,debate,economy,immigration,...
+        //can combine debate AND economy as well(can use these operators :AND,OR,NOT)
+        uriBuilder.appendQueryParameter("q", "");
+        //Free student key from the Guardian API website
         return new ArticleLoader(this, uriBuilder.toString());
     }
 

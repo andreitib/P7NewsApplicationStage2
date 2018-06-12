@@ -113,7 +113,7 @@ public final class QueryUtils {
             urlConnection.connect();
             // If the request was successful (response code 200),
             // then read the input stream and parse the response.
-            if (urlConnection.getResponseCode() == 200) {
+            if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 inputStream = urlConnection.getInputStream();
                 jsonResponse = readFromStream(inputStream);
             } else {
@@ -176,7 +176,7 @@ public final class QueryUtils {
                 //Get a single article news at position i within the list of newsApps
                 JSONObject currentArticlesApp = resultsArray.getJSONObject(i);
                 // Extract the value for the key called "sectionName"
-                String secName = currentArticlesApp.getString(json_sectionName);
+                String secName = currentArticlesApp.optString(json_sectionName);
 
                 // Extract the value for the key called "webPublicationDate"
                 String originalPublicationDate = currentArticlesApp.getString(json_publicationDate);
